@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Job Seeker Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h2 class="text-primary mb-4">Job Seeker Profile</h2>
+
+        <div class="card p-4">
+            <div class="mb-3">
+                <label>Full Name</label>
+                <input type="text" id="name" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" id="email" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Phone</label>
+                <input type="text" id="phone" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Skills</label>
+                <input type="text" id="skills" class="form-control" placeholder="Java, HTML, CSS">
+            </div>
+
+            <div class="mb-3">
+                <label>Resume</label>
+                <input type="file" id="resume" class="form-control">
+            </div>
+
+            <button class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+        </div>
+    </div>
+
+    <script>
+        function saveProfile() {
+            const profile = {
+                name: name.value,
+                email: email.value,
+                phone: phone.value,
+                skills: skills.value,
+                resume: resume.files[0] ? resume.files[0].name : ""
+            };
+
+            localStorage.setItem("jobSeekerProfile", JSON.stringify(profile));
+            alert("Profile saved successfully!");
+        }
+
+        window.onload = () => {
+            const data = JSON.parse(localStorage.getItem("jobSeekerProfile"));
+            if (data) {
+                name.value = data.name;
+                email.value = data.email;
+                phone.value = data.phone;
+                skills.value = data.skills;
+            }
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Job Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-4 shadow">
+                    <h3 class="text-center text-primary mb-3">Register</h3>
+
+                    <div class="mb-2">
+                        <label class="form-label">Name</label>
+                        <input type="text" id="name" class="form-control">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="email" class="form-control">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select id="role" class="form-control">
+                            <option value="">Select Role</option>
+                            <option value="employer">Employer</option>
+                            <option value="candidate">Candidate</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary w-100" onclick="registerUser()">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function registerUser() {
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim().toLowerCase();
+            let password = document.getElementById("password").value.trim();
+            let role = document.getElementById("role").value;
+
+            if (!name || !email || !password || !role) {
+                alert("All fields are required");
+                return;
+            }
+
+            let userExists = users.find(u => u.email === email);
+            if (userExists) {
+                alert("User already exists");
+                return;
+            }
+
+            users.push({
+                name: name,
+                email: email,
+                password: password,
+                role: role
+            });
+
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Registration successful");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>

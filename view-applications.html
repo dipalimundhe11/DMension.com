@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Applications | Job Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container d-flex justify-content-between">
+            <a class="navbar-brand fw-bold" href="index.html">Job Portal</a>
+            <a href="manage-jobs.html" class="btn btn-light">Manage Jobs</a>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h3 class="text-center text-primary mb-4">Job Applications</h3>
+        <div id="applicationList"></div>
+    </div>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        /* 🔒 EMPLOYER ONLY */
+        if (!user || user.role !== "employer") {
+            alert("Only employers can view applications");
+            window.location.href = "login.html";
+        }
+
+        const jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+        const applications = JSON.parse(localStorage.getItem("applications")) || [];
+        const applicationList = document.getElementById("applicationList");
+
+        /* Get employer job titles */
+        const myJobTitles = jobs
+            .filter(job => job.email === user.email)
+            .map(job => job.title);
+
+        /* Filter applications for employer jobs */
+        const myApplications = applications.filter(app =>
+            myJobTitles.includes(app.jobTitle)
+        );
+
+        if (myApplications.length === 0) {
+            applicationList.innerHTML = "<p class='text-center'>No applications received yet</p>";
+        } else {
+            myApplications.forEach(app => {
+                applicationList.innerHTML += `
+            <div class="card p-3 mb-3 shadow">
+                <h5>${app.jobTitle}</h5>
+                <p><b>Applicant Name:</b> ${app.applicant}</p>
+                <p><b>Email:</b> ${app.email}</p>
+            </div>
+        `;
+            });
+        }
+    </script>
+
+</body>
+
+</html>

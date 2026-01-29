@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card p-4 shadow">
+            <h3 class="text-center mb-3">Login</h3>
+
+            <input id="email" class="form-control mb-2" placeholder="Email">
+            <input id="password" type="password" class="form-control mb-3" placeholder="Password">
+
+            <button class="btn btn-success w-100" onclick="login()">Login</button>
+
+            <p class="text-center mt-2">
+                New user? <a href="register.html">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            let emailInput = email.value.trim().toLowerCase();
+            let passwordInput = password.value.trim();
+
+            let user = users.find(
+                u => u.email === emailInput && u.password === passwordInput
+            );
+
+            if (!user) {
+                alert("Invalid credentials");
+                return;
+            }
+
+            localStorage.setItem("loggedInUser", JSON.stringify(user));
+            alert("Login successful as " + user.role);
+
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+</html>

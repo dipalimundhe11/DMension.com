@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest IT Jobs | DMension</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* Job Card Styling */
+        
+        .job-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        
+        .job-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #0d6efd;
+        }
+        
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            background: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        
+        .filter-sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            position: sticky;
+            top: 90px;
+        }
+        
+        .type-badge {
+            font-size: 0.75rem;
+            padding: 5px 12px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">DMension</a>
+            <div class="ms-auto">
+                <a href="index.html" class="btn btn-outline-light btn-sm">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white border-bottom py-4 mb-5">
+        <div class="container">
+            <h2 class="fw-bold">Latest IT & Engineering Jobs</h2>
+            <p class="text-muted mb-0">Showing 120+ active opportunities for freshers</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="filter-sidebar">
+                    <h5 class="fw-bold mb-3">Filters</h5>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Branch</label>
+                        <select class="form-select form-select-sm">
+                            <option>All Branches</option>
+                            <option>Computer Science / IT</option>
+                            <option>Mechanical</option>
+                            <option>Civil</option>
+                            <option>Electronics</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Job Type</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="fulltime">
+                            <label class="form-check-label small" for="fulltime">Full-Time</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="intern">
+                            <label class="form-check-label small" for="intern">Internship</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Experience</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exp" id="fresher" checked>
+                            <label class="form-check-label small" for="fresher">Fresher (0 years)</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-sm w-100 mt-2">Apply Filters</button>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" placeholder="Search by Company or Role...">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+
+                <div class="job-card d-flex align-items-center">
+                    <div class="company-logo me-3">A</div>
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 fw-bold">Java Backend Engineer</h5>
+                            <span class="badge bg-info-subtle text-info type-badge">Hybrid</span>
+                        </div>
+                        <p class="text-muted mb-2">Amdocs • Hyderabad, India</p>
+                        <div class="small">
+                            <span class="me-3">📅 Posted 1 day ago</span>
+                            <span class="me-3">💰 ₹6.5 - 8.0 LPA</span>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-primary px-4" onclick="handleApply('Java Backend Engineer', 'Amdocs')">Apply</button>
+                    </div>
+                </div>
+
+                <div class="job-card d-flex align-items-center">
+                    <div class="company-logo me-3">I</div>
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 fw-bold">Cloud Associate Intern</h5>
+                            <span class="badge bg-success-subtle text-success type-badge">Full Time</span>
+                        </div>
+                        <p class="text-muted mb-2">Infosys • Bangalore, India</p>
+                        <div class="small">
+                            <span class="me-3">📅 Posted 4 hours ago</span>
+                            <span class="me-3">💰 Stipend: ₹25k/mo</span>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-primary px-4" onclick="handleApply('Cloud Associate Intern', 'Infosys')">Apply</button>
+                    </div>
+                </div>
+
+                <div class="job-card d-flex align-items-center">
+                    <div class="company-logo me-3">G</div>
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 fw-bold">React Developer (Junior)</h5>
+                            <span class="badge bg-warning-subtle text-warning type-badge">Remote</span>
+                        </div>
+                        <p class="text-muted mb-2">Google Cloud (Vendor) • Mumbai</p>
+                        <div class="small">
+                            <span class="me-3">📅 Posted 2 days ago</span>
+                            <span class="me-3">💰 ₹10.0 - 12.0 LPA</span>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-primary px-4" onclick="handleApply('React Developer (Junior)', 'Google Cloud')">Apply</button>
+                    </div>
+                </div>
+
+                <div class="job-card d-flex align-items-center">
+                    <div class="company-logo me-3">H</div>
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 fw-bold"> Data Analyst Engineer</h5>
+                            <span class="badge bg-warning-subtle text-warning type-badge">On-site</span>
+                        </div>
+                        <p class="text-muted mb-2">TCS • Pune (Hinjawadi), India</p>
+                        <div class="small">
+                            <span class="me-3">📅 Posted 4 days ago</span>
+                            <span class="me-3">💰 ₹18.0 - 20.0 LPA</span>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-primary px-4" onclick="handleApply('Data Analyst Engineer', 'TCS')">Apply</button>
+                    </div>
+                </div>
+
+                <div class="job-card d-flex align-items-center">
+                    <div class="company-logo me-3">K</div>
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 fw-bold"> DevOps Engineer</h5>
+                            <span class="badge bg-warning-subtle text-warning type-badge">Remote</span>
+                        </div>
+                        <p class="text-muted mb-2">Tech Corp • Pune Chennai, India</p>
+                        <div class="small">
+                            <span class="me-3">📅 Posted 1 days ago</span>
+                            <span class="me-3">💰 ₹8.0 - 10.0 LPA</span>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-primary px-4" onclick="handleApply('DevOps Engineer', 'Tech Corp')">Apply</button>
+                    </div>
+                </div>
+
+                <div class="job-card d-flex align-items-center">
+                    <div class="company-logo me-3">L</div>
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 fw-bold"> Frontend Developer</h5>
+                            <span class="badge bg-warning-subtle text-warning type-badge">Full-Time</span>
+                        </div>
+                        <p class="text-muted mb-2"> calix • Bengaluru, India</p>
+                        <div class="small">
+                            <span class="me-3">📅 Posted Now </span>
+                            <span class="me-3">💰 ₹8.0 - 10.0 LPA</span>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-primary px-4" onclick="handleApply('Frontend Developer', 'Calix')">Apply</button>
+                    </div>
+                </div>
+                <div class="job-card d-flex align-items-center">
+                    <div class="company-logo me-3">M</div>
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 fw-bold"> Site Reliability </h5>
+                            <span class="badge bg-warning-subtle text-warning type-badge">Intern</span>
+                        </div>
+                        <p class="text-muted mb-2"> Poshmark • chennai, India</p>
+                        <div class="small">
+                            <span class="me-3">📅 Posted Now </span>
+                            <span class="me-3">💰 ₹35,000/mo</span>
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <button class="btn btn-primary px-4" onclick="handleApply('Site Reliability', 'Poshmark')">Apply</button>
+                    </div>
+                </div>
+
+                <nav class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 mt-5 bg-dark text-white text-center">
+        <p class="mb-0 small">&copy; 2026 DMension Tech | Founded by Dipali Mundhe</p>
+    </footer>
+    <script>
+        function handleApply(jobTitle, company) {
+            // 1. Check if user is logged in using your existing localStorage key
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+            if (!user) {
+                // 2. If not logged in, show alert and redirect
+                alert("Please login as a Candidate to apply for " + jobTitle);
+                window.location.href = "login.html";
+            } else if (user.role !== "candidate") {
+                // 3. Ensure employers cannot apply for jobs
+                alert("Only students/candidates can apply for jobs.");
+            } else {
+                // 4. If logged in, simulate the application
+                alert("Success! Your application for " + jobTitle + " at " + company + " has been sent to the employer.");
+
+                // 5. Visual feedback: Change the button that was clicked
+                const btn = event.target;
+                btn.innerText = "Applied";
+                btn.classList.replace('btn-primary', 'btn-success');
+                btn.disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
